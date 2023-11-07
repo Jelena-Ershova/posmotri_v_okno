@@ -39,10 +39,6 @@ ol {
   list-style: none;
 }
 
-a:focus {
-  outline: none;
-}
-
 .content {
   display: grid;
   grid-template-columns: 710px 400px;
@@ -100,9 +96,10 @@ a:focus {
   font-size: 18px;
   background-color: transparent;
   appearance: none;
+  cursor: pointer;
 }
 .search-form__textfield:hover {
-  cursor: pointer;
+  cursor: text;
 }
 
 .search-form__textfield:active {
@@ -228,25 +225,26 @@ a:focus {
   max-height: 298px;
   max-width: 398px;
   overflow-y: auto;
-  overflow-x: hidden;
   padding-block-start: 2px;
 }
 
 .content__list-item {
+  margin-block: 2px;
+  margin-inline: 2px;
   padding-block-end: 30px;
+}
+.content__list-item:first-child {
+  margin-block-start: 0;
 }
 
 .content__card-link {
   display: block;
   text-decoration: none;
-  margin-block: 2px;
-  margin-inline: 2px;
 }
 
-.content__card-link:first-child {
-  margin-block-start: 0;
+.content__card-link:focus {
+  outline: none;
 }
-
 .content__card-link:active {
   background-color: #545050;
 }
@@ -281,7 +279,7 @@ a:focus {
   color: #fff;
   font-family: Oswald, sans-serif;
   font-size: 30px;
-  line-height: 100%; /* 30px */
+  line-height: 0.98;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -291,13 +289,23 @@ a:focus {
   padding-inline-start: 1px;
   padding-block-end: 2px;
   color: #fff;
-  line-height: 16.2px; /* 90% */
+  line-height: 0.9;
 
-  /*** Обрезаем мноточием ***/
-  display: -webkit-box;
+/***  
+        Обрезаем многоточием с 1 строки.
+        Не соответствие Макету!  
+***/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+/*********************************************************/
+
+  /*** Обрезаем многоточием с 4 строчки ***/
+  /* display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  */
 }
 
 .content__video-card {
